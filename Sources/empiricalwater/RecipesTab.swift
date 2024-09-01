@@ -90,7 +90,7 @@ struct RecipesTab: View {
                 
                 Section {
                     HStack {
-                        Text(appState.water == .glacial ? "Glacial Hardness" : "Spring Hardness")
+                        Text(appState.water == .glacial ? "glacial hardness" : "spring hardness")
                         Spacer()
                         let hardnessValue: String = {
                             var volumeCalculation: Double
@@ -102,10 +102,10 @@ struct RecipesTab: View {
                                 volumeCalculation = appState.unitVolume * 3.785
                             }
                             if appState.water == .glacial {
-                                let value = appState.brewTypeGlacialHardness * volumeCalculation
+                                let value = appState.brewTypeglacialhardness * volumeCalculation
                                 return String(format: "%.2f", value)
                             } else if appState.water == .spring {
-                                let value = appState.brewTypeSpringHardness * volumeCalculation
+                                let value = appState.brewTypespringhardness * volumeCalculation
                                 return String(format: "%.2f", value)
                             } else {
                                 return ""
@@ -119,7 +119,7 @@ struct RecipesTab: View {
                     //.listRowBackground(Color(red: 47.0/255.0, green: 79.0/255.0, blue: 140.0/255.0))
                     
                     HStack {
-                        Text(appState.water == .glacial ? "Glacial Buffer" : "Spring Buffer")
+                        Text(appState.water == .glacial ? "glacial buffer" : "spring buffer")
                         Spacer()
                         let bufferValue: String = {
                             var volumeCalculation: Double
@@ -131,10 +131,10 @@ struct RecipesTab: View {
                                 volumeCalculation = appState.unitVolume * 3.785
                             }
                             if appState.water == .glacial {
-                                let value = appState.brewTypeGlacialBuffer * volumeCalculation
+                                let value = appState.brewTypeglacialbuffer * volumeCalculation
                                 return String(format: "%.2f", value)
                             } else if appState.water == .spring {
-                                let value = appState.brewTypeSpringBuffer * volumeCalculation
+                                let value = appState.brewTypespringbuffer * volumeCalculation
                                 return String(format: "%.2f", value)
                             } else {
                                 return ""
@@ -149,9 +149,9 @@ struct RecipesTab: View {
                     //.listRowBackground(Color(red: 88.0/255.0, green: 197.0/255.0, blue: 250.0/255.0))
                     
                     HStack {
-                        Text("Optional: Extraction Booster")
+                        Text("Optional: extraction booster")
                         Spacer()
-                        let extractionBoosterValue: String = {
+                        let extractionboosterValue: String = {
                             var volumeCalculation: Double
                             if appState.unit == .milliliter {
                                 volumeCalculation = appState.unitVolume / 1000.00
@@ -161,16 +161,16 @@ struct RecipesTab: View {
                                 volumeCalculation = appState.unitVolume * 3.785
                             }
                             if appState.water == .glacial {
-                                let value = appState.brewTypeGlacialExtrationBooster * volumeCalculation
+                                let value = appState.brewTypeglacialextractionbooster * volumeCalculation
                                 return String(format: "%.2f", value)
                             } else if appState.water == .spring {
-                                let value = appState.brewTypeSpringExtrationBooster * volumeCalculation
+                                let value = appState.brewTypespringextractionbooster * volumeCalculation
                                 return String(format: "%.2f", value)
                             } else {
                                 return ""
                             }
                         }()
-                        Text("\(extractionBoosterValue) grams")
+                        Text("\(extractionboosterValue) grams")
                             .bold()
                     }
                     .foregroundColor(.white)
@@ -294,12 +294,12 @@ struct RecipesTab: View {
 }
 
 func updateBrewTypeValues() {
-    mainAppState.brewTypeGlacialBuffer = mainAppState.brewType.selectedBrewType.glacial_buffer_grams
-    mainAppState.brewTypeGlacialExtrationBooster = mainAppState.brewType.selectedBrewType.glacial_extraction_booster_grams
-    mainAppState.brewTypeGlacialHardness = mainAppState.brewType.selectedBrewType.glacial_hardness_grams
-    mainAppState.brewTypeSpringBuffer = mainAppState.brewType.selectedBrewType.spring_buffer_grams
-    mainAppState.brewTypeSpringExtrationBooster = mainAppState.brewType.selectedBrewType.spring_extraction_booster_grams
-    mainAppState.brewTypeSpringHardness = mainAppState.brewType.selectedBrewType.spring_hardness_grams
+    mainAppState.brewTypeglacialbuffer = mainAppState.brewType.selectedBrewType.glacial_buffer_grams
+    mainAppState.brewTypeglacialextractionbooster = mainAppState.brewType.selectedBrewType.glacial_extraction_booster_grams
+    mainAppState.brewTypeglacialhardness = mainAppState.brewType.selectedBrewType.glacial_hardness_grams
+    mainAppState.brewTypespringbuffer = mainAppState.brewType.selectedBrewType.spring_buffer_grams
+    mainAppState.brewTypespringextractionbooster = mainAppState.brewType.selectedBrewType.spring_extraction_booster_grams
+    mainAppState.brewTypespringhardness = mainAppState.brewType.selectedBrewType.spring_hardness_grams
 }
 
 func updateDescription() {
