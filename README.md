@@ -1,4 +1,4 @@
-# fluid lake
+# empirical water
 
 This is a [Skip](https://skip.tools) dual-platform app project.
 It builds a native app for both iOS and Android.
@@ -35,7 +35,7 @@ An Android emulator must already be running, which can be launched from
 Android Studio's Device Manager.
 
 To run both the Swift and Kotlin apps simultaneously, 
-launch the fluidlakeApp target from Xcode.
+launch the empiricalwaterApp target from Xcode.
 A build phases runs the "Launch Android APK" script that
 will deploy the transpiled app a running Android emulator or connected device.
 Logging output for the iOS app can be viewed in the Xcode console, and in
