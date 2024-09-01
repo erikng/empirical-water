@@ -1,4 +1,4 @@
-package fluidlake.module
+package empiricalwater.module
 
 import skip.lib.*
 import skip.model.*
@@ -19,7 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.core.app.ActivityCompat
 
-internal val logger: SkipLogger = SkipLogger(subsystem = "fluidlake.module", category = "fluidlake")
+internal val logger: SkipLogger = SkipLogger(subsystem = "empiricalwater.module", category = "empiricalwater")
 
 /// AndroidAppMain is the `android.app.Application` entry point, and must match `application android:name` in the AndroidMainfest.xml file.
 open class AndroidAppMain: Application {
@@ -43,6 +43,8 @@ open class MainActivity: AppCompatActivity {
 
     override fun onCreate(savedInstanceState: android.os.Bundle?) {
         super.onCreate(savedInstanceState)
+        logger.info("starting activity")
+        UIApplication.launch(this)
         enableEdgeToEdge()
 
         setContent {

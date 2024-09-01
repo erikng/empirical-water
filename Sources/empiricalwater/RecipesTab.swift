@@ -1,6 +1,6 @@
 //
 //  RecipesTab.swift
-//  fluid lake
+//  empirical water
 //
 //  Created by Erik Gomez on 08/23/24.
 //
@@ -235,26 +235,16 @@ struct RecipesTab: View {
                         Text("Purchase these concentrates at ")
                             .foregroundColor(.secondary)
                         
-                        Text("empirical")
+                        Link("empirical", destination: URL(string: "https://empiricalwater.com")!)
                             .bold()
                             .foregroundColor(Color(red: 21.0/255.0, green: 67.0/255.0, blue: 109.0/255.0))
-                            .onTapGesture {
-                                if let url = URL(string: "https://empiricalwater.com") {
-                                    UIApplication.shared.open(url)
-                                }
-                            }
-                        
+
                         Text(" ")
                             .foregroundColor(.secondary)
                         
-                        Text("water")
+                        Link("water", destination: URL(string: "https://empiricalwater.com")!)
                             .bold()
                             .foregroundColor(Color(red: 0.0/255.0, green: 199.0/255.0, blue: 255.0/255.0))
-                            .onTapGesture {
-                                if let url = URL(string: "https://empiricalwater.com") {
-                                    UIApplication.shared.open(url)
-                                }
-                            }
                     }
                     .font(.footnote)
                     .padding(.top)

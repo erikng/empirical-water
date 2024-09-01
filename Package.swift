@@ -7,17 +7,17 @@
 import PackageDescription
 
 let package = Package(
-    name: "fluid-lake",
+    name: "empirical-water",
     defaultLocalization: "en",
     platforms: [.iOS(.v17), .macOS(.v14), .tvOS(.v17), .watchOS(.v10), .macCatalyst(.v17)],
     products: [
-        .library(name: "fluidlakeApp", type: .dynamic, targets: ["fluidlake"]),
+        .library(name: "empiricalwaterApp", type: .dynamic, targets: ["empiricalwater"]),
     ],
     dependencies: [
-        .package(url: "https://source.skip.tools/skip.git", from: "1.0.4"),
+        .package(url: "https://source.skip.tools/skip.git", from: "1.0.8"),
         .package(url: "https://source.skip.tools/skip-ui.git", from: "1.0.0")
     ],
     targets: [
-        .target(name: "fluidlake", dependencies: [.product(name: "SkipUI", package: "skip-ui")], plugins: [.plugin(name: "skipstone", package: "skip")]),
+        .target(name: "empiricalwater", dependencies: [.product(name: "SkipUI", package: "skip-ui")], plugins: [.plugin(name: "skipstone", package: "skip")]),
     ]
 )

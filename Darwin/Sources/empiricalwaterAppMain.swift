@@ -3,8 +3,8 @@
 // as published by the Free Software Foundation https://fsf.org
 
 import SwiftUI
-import fluidlake
+import empiricalwater
 
 /// The entry point to the app simply loads the App implementation from SPM module.
-@main struct AppMain: App, fluidlakeApp {
+@main struct AppMain: App, empiricalwaterApp {
 }

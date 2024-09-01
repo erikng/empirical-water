@@ -1,6 +1,6 @@
 //
-//  fliudlakeApp.swift
-//  fluid lake
+//  empiricalwaterApp.swift
+//  empirical water
 //
 //  Created by Erik Gomez on 08/23/24.
 //
@@ -9,7 +9,7 @@ import Foundation
 import OSLog
 import SwiftUI
 
-let logger: Logger = Logger(subsystem: "io.skyedesign.fluidlake", category: "fluidlake")
+let logger: Logger = Logger(subsystem: "com.empiricalwater.app", category: "empiricalwater")
 /// The Android SDK number we are running against, or `nil` if not running on Android
 let androidSDK = ProcessInfo.processInfo.environment["android.os.Build.VERSION.SDK_INT"].flatMap({ Int($0) })
 
@@ -53,10 +53,10 @@ public struct RootView : View {
 }
 
 #if !SKIP
-public protocol fluidlakeApp : App {
+public protocol empiricalwaterApp : App {
 }
 
-public extension fluidlakeApp {
+public extension empiricalwaterApp {
     var body: some Scene {
         WindowGroup {
             RootView()

@@ -1,6 +1,6 @@
 //
 //  SettingsTab.swift
-//  fluid lake
+//  empirical water
 //
 //  Created by Erik Gomez on 08/23/24.
 //
@@ -64,26 +64,16 @@ struct SettingsTab: View {
                 // empirical water
                 Section {
                     HStack(spacing: 0) {
-                        Text("empirical")
+                        Link("empirical", destination: URL(string: "https://empiricalwater.com")!)
                             .bold()
                             .foregroundColor(Color(red: 21.0/255.0, green: 67.0/255.0, blue: 109.0/255.0))
-                            .onTapGesture {
-                                if let url = URL(string: "https://empiricalwater.com") {
-                                    UIApplication.shared.open(url)
-                                }
-                            }
                         
                         Text(" ")
                             .foregroundColor(.secondary)
                         
-                        Text("water")
+                        Link("water", destination: URL(string: "https://empiricalwater.com")!)
                             .bold()
                             .foregroundColor(Color(red: 0.0/255.0, green: 199.0/255.0, blue: 255.0/255.0))
-                            .onTapGesture {
-                                if let url = URL(string: "https://empiricalwater.com") {
-                                    UIApplication.shared.open(url)
-                                }
-                            }
                         
                         Text(" ")
                             .foregroundColor(.secondary)
@@ -94,6 +84,18 @@ struct SettingsTab: View {
                     .font(.footnote)
                 } header: {
                     Text("Acknowledgements")
+                } footer: {}
+
+                // Original Authorship
+                Section {
+                    Group {
+                        Text("[Blossom Rain](https://github.com/erikng/Blossom-Rain) - the original application this code is based upon.")
+                        Text("[Erik Gomez](https://github.com/erikng) - the author of Blossom Rain and v1.0 of our application.")
+                    }
+                    .foregroundColor(.secondary)
+                    .font(.footnote)
+                } header: {
+                    Text("Further thanks")
                 } footer: {}
             }
             .navigationTitle("Settings")
