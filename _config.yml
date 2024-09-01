@@ -2,7 +2,7 @@ remote_theme: just-the-docs/just-the-docs
 logo: "/assets/AppIcon.png"
 search_enabled: false
 aux_links:
-  "Submit an issue with Fluid Lake":
-    - "//github.com/erikng/fluid-lake/issues"
+  "Submit an issue with empirical water":
+    - "//github.com/arbyavanesian/empirical-water/issues"
 aux_links_new_tab: true
 color_scheme: dark
