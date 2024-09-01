@@ -24,23 +24,23 @@ enum Waters: String, CaseIterable, Identifiable {
     // Return the associated Water for each case
     var selectedWater: Water {
         switch self {
-        case .glacial: return Glacial
-        case .spring: return Spring
+        case .glacial: return glacial
+        case .spring: return spring
         }
     }
 }
 
 // Configure the water types
-let Glacial = Water(
+let glacial = Water(
     id: UUID(),
-    name: "Glacial",
-    description: "Inspired by natural mineral water from glaciers, our **GLACIAL** profile is harmonious and lively, emphasizing clarity and complexity in coffee & tea. We reverse-engineered glacial mineral water by painstakingly emulating the natural limestone dissolution process, for record-low levels of chloride and sulfate impurities in our water."
+    name: "glacial",
+    description: "Inspired by natural mineral water from glaciers, our **glacial** profile is harmonious and lively, emphasizing clarity and complexity in coffee & tea. We reverse-engineered glacial mineral water by painstakingly emulating the natural limestone dissolution process, for record-low levels of chloride and sulfate impurities in our water."
 )
 
-let Spring = Water(
+let spring = Water(
     id: UUID(),
-    name: "Spring",
-    description: "Inspired by natural mineral water from springs, our **SPRING** profile is thick, concentrated and resonant, emphasizing body and richness in coffee & tea. We reverse-engineered glacial mineral water by painstakingly emulating the natural limestone dissolution process, for record low levels of chloride and sulfate impurities in our water."
+    name: "spring",
+    description: "Inspired by natural mineral water from springs, our **spring** profile is thick, concentrated and resonant, emphasizing body and richness in coffee & tea. We reverse-engineered glacial mineral water by painstakingly emulating the natural limestone dissolution process, for record low levels of chloride and sulfate impurities in our water."
 )
 
 // Define the BrewType struct
