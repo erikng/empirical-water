@@ -3,8 +3,7 @@
 This is a [Skip](https://skip.tools) dual-platform app project.
 It builds a native app for both iOS and Android.
 
-## Original Author
-This application was originally written by [Erik Gomez](https://github.com/erikng) and transferred over to empirical water. Much of the code is taken from [Blossom Rain](https://github.com/erikng/Blossom-Rain) - a free and open source application for Lotus Water Drops.
+Written by [Erik Gomez](https://github.com/erikng). Much of the code is taken from [Blossom Rain](https://github.com/erikng/Blossom-Rain) - a free and open source application for Lotus Water Drops.
 
 ## Building
 

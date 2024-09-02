@@ -4,12 +4,6 @@
     " " : {
 
     },
-    "[Blossom Rain](https://github.com/erikng/Blossom-Rain) - the original application this code is based upon." : {
-
-    },
-    "[Erik Gomez](https://github.com/erikng) - the author of Blossom Rain and v1.0 of our application." : {
-
-    },
     "**Note:** For best accuracy, rely primarily on the 0.50 mL fill line for measuring buffer. For higher intensity and acidity, use less buffer. For lower intensity and acidity, use more buffer." : {
 
     },
@@ -19,10 +13,8 @@
     "%@ mL" : {
 
     },
-    "Acknowledgements" : {
-
-    },
     "Appearance" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -53,7 +45,7 @@
     "Brew Types" : {
 
     },
-    "Close" : {
+    "Coming Soon!" : {
 
     },
     "Dark" : {
@@ -85,22 +77,13 @@
         }
       }
     },
-    "Disable Screen Sleep" : {
-
-    },
     "empirical" : {
 
     },
-    "Formula" : {
+    "glacial buffer" : {
 
     },
-    "Further thanks" : {
-
-    },
-    "Glacial Buffer" : {
-
-    },
-    "Glacial Hardness" : {
+    "glacial hardness" : {
 
     },
     "Hello %@!" : {
@@ -161,12 +144,6 @@
         }
       }
     },
-    "If you would prefer to input the volume manually, select this option." : {
-
-    },
-    "is founded by [Arby Avanesian](https://www.instagram.com/arbyavanesian)" : {
-
-    },
     "Item %lld" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -225,9 +202,6 @@
         }
       }
     },
-    "Manual Volume Input" : {
-
-    },
     "Name" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -257,7 +231,7 @@
         }
       }
     },
-    "Optional: Extraction Booster" : {
+    "Optional: extraction booster" : {
 
     },
     "Powered by %@" : {
@@ -289,16 +263,7 @@
         }
       }
     },
-    "Prevent the device from going to sleep while the application running." : {
-
-    },
     "Purchase these concentrates at " : {
-
-    },
-    "Recipe Information" : {
-
-    },
-    "Recipes" : {
 
     },
     "Screen %lld" : {
@@ -331,6 +296,7 @@
       }
     },
     "Settings" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -358,10 +324,10 @@
         }
       }
     },
-    "Spring Buffer" : {
+    "spring buffer" : {
 
     },
-    "Spring Hardness" : {
+    "spring hardness" : {
 
     },
     "System" : {
@@ -393,19 +359,10 @@
         }
       }
     },
-    "The amount of steps the **milliliter** slider will increase or decrease by." : {
+    "Thanks to [Erik Gomez](https://github.com/erikng), the author of [Blossom Rain](https://github.com/erikng/Blossom-Rain), which this code is based on and v1.0 of our application." : {
 
     },
     "Unit" : {
-
-    },
-    "User Interface" : {
-
-    },
-    "Volume" : {
-
-    },
-    "Volume Input Steps (mL)" : {
 
     },
     "water" : {
