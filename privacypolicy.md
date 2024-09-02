@@ -30,7 +30,7 @@ This Service does not use these “cookies”.
 
 **Service Providers**
 
-I may communicate with Lotus Coffee Products to keep this application updated with the latest recipes and logic.
+I may communicate with empirical water to keep this application updated with the latest recipes and logic.
 
 **Security**
 
@@ -38,7 +38,7 @@ This application does not need a connection to the internet.
 
 **Links to Other Sites**
 
-This Service contains links to Lotus Coffee Products website.
+This Service contains links to empirical water website.
 
 **Children’s Privacy**
 
