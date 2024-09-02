@@ -13,14 +13,14 @@ struct RecipeView: View {
     var body: some View {
         List {
             Section {
-                Picker("Waters", selection: $appState.water) {
+                Picker("Water", selection: $appState.water) {
                     ForEach(Waters.allCases) { water in
                         Text(water.selectedWater.name)
                             .tag(water)
                     }
                 }
                 
-                Picker("Brew Types", selection: $appState.brewType) {
+                Picker("Brew", selection: $appState.brewType) {
                     ForEach(BrewTypes.allCases) { brewtype in
                         Text(brewtype.selectedBrewType.name)
                             .tag(brewtype)

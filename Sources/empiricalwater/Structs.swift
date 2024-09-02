@@ -87,25 +87,25 @@ enum BrewTypes: String, CaseIterable, Identifiable {
 let Aquifer = Water(
     id: UUID(),
     name: "aquifer",
-    description: "**aquifer** is a comprehensive mineral profile for brewing any coffee or tea, inspired by aquifer water."
+    description: "**[aquifer](https://empiricalwater.com/products/empirical-water-aquifer)** is a comprehensive mineral profile for brewing any coffee or tea, inspired by aquifer water."
 )
 
 let Glacial = Water(
     id: UUID(),
     name: "glacial",
-    description: "Inspired by natural mineral water from glaciers, our **glacial** profile is harmonious and lively, emphasizing clarity and complexity in coffee & tea. We reverse-engineered glacial mineral water by painstakingly emulating the natural limestone dissolution process, for record-low levels of chloride and sulfate impurities in our water."
+    description: "Inspired by natural mineral water from glaciers, our **[glacial](https://empiricalwater.com/products/empirical-water-glacial)** profile is harmonious and lively, emphasizing clarity and complexity in coffee & tea. We reverse-engineered glacial mineral water by painstakingly emulating the natural limestone dissolution process, for record-low levels of chloride and sulfate impurities in our water."
 )
 
 let Spring = Water(
     id: UUID(),
     name: "spring",
-    description: "Inspired by natural mineral water from springs, our **spring** profile is thick, concentrated and resonant, emphasizing body and richness in coffee & tea. We reverse-engineered glacial mineral water by painstakingly emulating the natural limestone dissolution process, for record low levels of chloride and sulfate impurities in our water."
+    description: "Inspired by natural mineral water from springs, our **[spring](https://empiricalwater.com/products/empirical-water-spring)** profile is thick, concentrated and resonant, emphasizing body and richness in coffee & tea. We reverse-engineered glacial mineral water by painstakingly emulating the natural limestone dissolution process, for record low levels of chloride and sulfate impurities in our water."
 )
 
 // Configure the brew types
 let lightRoast = BrewType(
     id: UUID(),
-    name: "Light",
+    name: "Light Roast",
     note: "Note: For best accuracy, rely primarily on the 0.50 mL fill line for measuring buffer. For higher intensity and acidity, use less buffer. For lower intensity and acidity, use more buffer.",
     aquifer_buffer_grams: 0.0,
     aquifer_extraction_booster_grams: 0.0,
@@ -120,7 +120,7 @@ let lightRoast = BrewType(
 
 let mediumRoast = BrewType(
     id: UUID(),
-    name: "Medium",
+    name: "Medium Roast",
     note: "Note: For best accuracy, rely primarily on the 0.50 mL fill line for measuring buffer. For higher intensity and acidity, use less buffer. For lower intensity and acidity, use more buffer.",
     aquifer_buffer_grams: 0.0,
     aquifer_extraction_booster_grams: 0.0,
@@ -135,7 +135,7 @@ let mediumRoast = BrewType(
 
 let darkRoast = BrewType(
     id: UUID(),
-    name: "Dark",
+    name: "Dark Roast",
     note: "Note: For best accuracy, rely primarily on the 0.50 mL fill line for measuring buffer. For higher intensity and acidity, use less buffer. For lower intensity and acidity, use more buffer.",
     aquifer_buffer_grams: 0.0,
     aquifer_extraction_booster_grams: 0.0,
