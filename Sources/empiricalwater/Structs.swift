@@ -35,11 +35,12 @@ extension Units {
 struct Water: Codable, Hashable, Identifiable {
     var id: UUID
     var name: String
+    var note: String = ""
     var description: String
 }
 
 enum Waters: String, CaseIterable, Identifiable {
-    case aquifer, glacial, spring
+    case aquifer, glacial, spring // TODO: Add here for another water type
     
     var id: String { self.rawValue }
 
@@ -48,23 +49,25 @@ enum Waters: String, CaseIterable, Identifiable {
         case .aquifer: return Aquifer
         case .glacial: return Glacial
         case .spring: return Spring
+        // TODO: Add here for another water type
         }
     }
 }
 
-struct BrewType: Codable, Hashable, Identifiable {
+struct WaterSource {
+    var bufferGrams: Double
+    var extractionBoosterGrams: Double
+    var hardnessGrams: Double
+}
+
+struct BrewType: Identifiable {
     var id: UUID
     var name: String
-    var note: String
-    var aquifer_buffer_grams: Double
-    var aquifer_extraction_booster_grams: Double
-    var aquifer_hardness_grams: Double
-    var glacial_buffer_grams: Double
-    var glacial_extraction_booster_grams: Double
-    var glacial_hardness_grams: Double
-    var spring_buffer_grams: Double
-    var spring_extraction_booster_grams: Double
-    var spring_hardness_grams: Double
+    var note: String = "**Note:** For best accuracy, rely primarily on the 0.50 mL fill line for measuring buffer. For higher intensity and acidity, use less buffer. For lower intensity and acidity, use more buffer."
+    var aquifer: WaterSource
+    var glacial: WaterSource
+    var spring: WaterSource
+    // TODO: Add here for another water type
 }
 
 enum BrewTypes: String, CaseIterable, Identifiable {
@@ -87,6 +90,7 @@ enum BrewTypes: String, CaseIterable, Identifiable {
 let Aquifer = Water(
     id: UUID(),
     name: "aquifer",
+    note: "**Coming Soon!**", // TODO: Remove this when ready
     description: "**[aquifer](https://empiricalwater.com/products/empirical-water-aquifer)** is a comprehensive mineral profile for brewing any coffee or tea, inspired by aquifer water."
 )
 
@@ -102,78 +106,97 @@ let Spring = Water(
     description: "Inspired by natural mineral water from springs, our **[spring](https://empiricalwater.com/products/empirical-water-spring)** profile is thick, concentrated and resonant, emphasizing body and richness in coffee & tea. We reverse-engineered glacial mineral water by painstakingly emulating the natural limestone dissolution process, for record low levels of chloride and sulfate impurities in our water."
 )
 
+// TODO: Add here for another water type
+
 // Configure the brew types
 let lightRoast = BrewType(
     id: UUID(),
     name: "Light Roast",
-    note: "Note: For best accuracy, rely primarily on the 0.50 mL fill line for measuring buffer. For higher intensity and acidity, use less buffer. For lower intensity and acidity, use more buffer.",
-    aquifer_buffer_grams: 0.0,
-    aquifer_extraction_booster_grams: 0.0,
-    aquifer_hardness_grams: 0.0,
-    glacial_buffer_grams: 0.59,
-    glacial_extraction_booster_grams: 0.59,
-    glacial_hardness_grams: 50.0,
-    spring_buffer_grams: 1.18,
-    spring_extraction_booster_grams: 1.18,
-    spring_hardness_grams: 100.0
+    aquifer: WaterSource(bufferGrams: 0.0, extractionBoosterGrams: 0.0, hardnessGrams: 0.0),
+    glacial: WaterSource(bufferGrams: 0.59, extractionBoosterGrams: 0.59, hardnessGrams: 50.0),
+    spring: WaterSource(bufferGrams: 1.18, extractionBoosterGrams: 1.18, hardnessGrams: 100.0)
+    // TODO: Add here for another water type
 )
 
 let mediumRoast = BrewType(
     id: UUID(),
     name: "Medium Roast",
-    note: "Note: For best accuracy, rely primarily on the 0.50 mL fill line for measuring buffer. For higher intensity and acidity, use less buffer. For lower intensity and acidity, use more buffer.",
-    aquifer_buffer_grams: 0.0,
-    aquifer_extraction_booster_grams: 0.0,
-    aquifer_hardness_grams: 0.0,
-    glacial_buffer_grams: 1.18,
-    glacial_extraction_booster_grams: 0.59,
-    glacial_hardness_grams: 50.0,
-    spring_buffer_grams: 2.36,
-    spring_extraction_booster_grams: 1.18,
-    spring_hardness_grams: 100.0
+    aquifer: WaterSource(bufferGrams: 0.0, extractionBoosterGrams: 0.0, hardnessGrams: 0.0),
+    glacial: WaterSource(bufferGrams: 1.18, extractionBoosterGrams: 0.59, hardnessGrams: 50.0),
+    spring: WaterSource(bufferGrams: 2.36, extractionBoosterGrams: 1.18, hardnessGrams: 100.0)
+    // TODO: Add here for another water type
 )
 
 let darkRoast = BrewType(
     id: UUID(),
     name: "Dark Roast",
-    note: "Note: For best accuracy, rely primarily on the 0.50 mL fill line for measuring buffer. For higher intensity and acidity, use less buffer. For lower intensity and acidity, use more buffer.",
-    aquifer_buffer_grams: 0.0,
-    aquifer_extraction_booster_grams: 0.0,
-    aquifer_hardness_grams: 0.0,
-    glacial_buffer_grams: 1.77,
-    glacial_extraction_booster_grams: 0.59,
-    glacial_hardness_grams: 50.0,
-    spring_buffer_grams: 3.54,
-    spring_extraction_booster_grams: 1.18,
-    spring_hardness_grams: 100.0
+    aquifer: WaterSource(bufferGrams: 0.0, extractionBoosterGrams: 0.0, hardnessGrams: 0.0),
+    glacial: WaterSource(bufferGrams: 1.77, extractionBoosterGrams: 0.59, hardnessGrams: 50.0),
+    spring: WaterSource(bufferGrams: 3.54, extractionBoosterGrams: 1.18, hardnessGrams: 100.0)
+    // TODO: Add here for another water type
 )
 
 let Espresso = BrewType(
     id: UUID(),
     name: "Espresso",
-    note: "Note: For best accuracy, rely primarily on the 0.50 mL fill line for measuring buffer. For higher intensity and acidity, use less buffer. For lower intensity and acidity, use more buffer.",
-    aquifer_buffer_grams: 0.0,
-    aquifer_extraction_booster_grams: 0.0,
-    aquifer_hardness_grams: 0.0,
-    glacial_buffer_grams: 1.77,
-    glacial_extraction_booster_grams: 0.59,
-    glacial_hardness_grams: 50.0,
-    spring_buffer_grams: 0.0,
-    spring_extraction_booster_grams: 0.0,
-    spring_hardness_grams: 0.0
+    aquifer: WaterSource(bufferGrams: 0.0, extractionBoosterGrams: 0.0, hardnessGrams: 0.0),
+    glacial: WaterSource(bufferGrams: 1.77, extractionBoosterGrams: 0.59, hardnessGrams: 50.0),
+    spring: WaterSource(bufferGrams: 0.0, extractionBoosterGrams: 0.0, hardnessGrams: 0.0)
+    // TODO: Add here for another water type
 )
 
 let Tea = BrewType(
     id: UUID(),
     name: "Tea",
-    note: "Note: For best accuracy, rely primarily on the 0.50 mL fill line for measuring buffer. For higher intensity and acidity, use less buffer. For lower intensity and acidity, use more buffer.",
-    aquifer_buffer_grams: 0.0,
-    aquifer_extraction_booster_grams: 0.0,
-    aquifer_hardness_grams: 0.0,
-    glacial_buffer_grams: 0.59,
-    glacial_extraction_booster_grams: 0.59,
-    glacial_hardness_grams: 50.0,
-    spring_buffer_grams: 1.18,
-    spring_extraction_booster_grams: 1.18,
-    spring_hardness_grams: 100.0
+    aquifer: WaterSource(bufferGrams: 0.0, extractionBoosterGrams: 0.0, hardnessGrams: 0.0),
+    glacial: WaterSource(bufferGrams: 0.59, extractionBoosterGrams: 0.59, hardnessGrams: 50.0),
+    spring: WaterSource(bufferGrams: 1.18, extractionBoosterGrams: 1.18, hardnessGrams: 100.0)
+    // TODO: Add here for another water type
 )
+
+func calculateBrewTypeValues(for component: String) -> String {
+    var value: Double = 0.0
+    let volumeCalculation = mainAppState.unit == .liter ? mainAppState.unitVolume : mainAppState.unitVolume * 3.785
+    
+    let waterSource = {
+        switch mainAppState.water.selectedWater.name {
+        case "aquifer": return mainAppState.brewType.selectedBrewType.aquifer
+        case "glacial": return mainAppState.brewType.selectedBrewType.glacial
+        case "spring": return mainAppState.brewType.selectedBrewType.spring
+        // TODO: Add here for another water type
+        default: return WaterSource(bufferGrams: 0, extractionBoosterGrams: 0, hardnessGrams: 0)
+        }
+    }()
+    
+    switch component {
+    case "hardness": value = waterSource.hardnessGrams * volumeCalculation
+    case "buffer": value = waterSource.bufferGrams * volumeCalculation
+    case "extraction booster": value = waterSource.extractionBoosterGrams * volumeCalculation
+    default: break
+    }
+    
+    return String(format: "%.2f", value)
+}
+
+func calculateZeroTDSWater() -> String {
+    let volumeCalculation = mainAppState.unit == .liter ? mainAppState.unitVolume : mainAppState.unitVolume * 3.785
+    var value: Double = 0.0
+    
+    switch mainAppState.water {
+    case .aquifer:
+        return "0" // TODO: Remove when ready
+    case .glacial:
+        value = 950 * volumeCalculation
+    case .spring:
+        if mainAppState.brewType.selectedBrewType.name != "Espresso" {
+            value = 900 * volumeCalculation
+        } else {
+            return "0"
+        }
+    // TODO: Add here for another water type
+    default:
+        return ""
+    }
+    
+    return String(format: "%.2f", value)
+}
