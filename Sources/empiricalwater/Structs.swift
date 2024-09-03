@@ -112,7 +112,7 @@ let Spring = Water(
 let lightRoast = BrewType(
     id: UUID(),
     name: "Light Roast",
-    aquifer: WaterSource(bufferGrams: 0.0, extractionBoosterGrams: 0.0, hardnessGrams: 0.0),
+    aquifer: WaterSource(bufferGrams: 0.0, extractionBoosterGrams: 0.0, hardnessGrams: 0.0), // TODO: Put actual calculations
     glacial: WaterSource(bufferGrams: 0.59, extractionBoosterGrams: 0.59, hardnessGrams: 50.0),
     spring: WaterSource(bufferGrams: 1.18, extractionBoosterGrams: 1.18, hardnessGrams: 100.0)
     // TODO: Add here for another water type
@@ -121,7 +121,7 @@ let lightRoast = BrewType(
 let mediumRoast = BrewType(
     id: UUID(),
     name: "Medium Roast",
-    aquifer: WaterSource(bufferGrams: 0.0, extractionBoosterGrams: 0.0, hardnessGrams: 0.0),
+    aquifer: WaterSource(bufferGrams: 0.0, extractionBoosterGrams: 0.0, hardnessGrams: 0.0), // TODO: Put actual calculations
     glacial: WaterSource(bufferGrams: 1.18, extractionBoosterGrams: 0.59, hardnessGrams: 50.0),
     spring: WaterSource(bufferGrams: 2.36, extractionBoosterGrams: 1.18, hardnessGrams: 100.0)
     // TODO: Add here for another water type
@@ -130,7 +130,7 @@ let mediumRoast = BrewType(
 let darkRoast = BrewType(
     id: UUID(),
     name: "Dark Roast",
-    aquifer: WaterSource(bufferGrams: 0.0, extractionBoosterGrams: 0.0, hardnessGrams: 0.0),
+    aquifer: WaterSource(bufferGrams: 0.0, extractionBoosterGrams: 0.0, hardnessGrams: 0.0), // TODO: Put actual calculations
     glacial: WaterSource(bufferGrams: 1.77, extractionBoosterGrams: 0.59, hardnessGrams: 50.0),
     spring: WaterSource(bufferGrams: 3.54, extractionBoosterGrams: 1.18, hardnessGrams: 100.0)
     // TODO: Add here for another water type
@@ -139,16 +139,16 @@ let darkRoast = BrewType(
 let Espresso = BrewType(
     id: UUID(),
     name: "Espresso",
-    aquifer: WaterSource(bufferGrams: 0.0, extractionBoosterGrams: 0.0, hardnessGrams: 0.0),
+    aquifer: WaterSource(bufferGrams: 0.0, extractionBoosterGrams: 0.0, hardnessGrams: 0.0), // TODO: Put actual calculations
     glacial: WaterSource(bufferGrams: 1.77, extractionBoosterGrams: 0.59, hardnessGrams: 50.0),
-    spring: WaterSource(bufferGrams: 0.0, extractionBoosterGrams: 0.0, hardnessGrams: 0.0)
+    spring: WaterSource(bufferGrams: 0.0, extractionBoosterGrams: 0.0, hardnessGrams: 0.0) // Spring does not support espresso
     // TODO: Add here for another water type
 )
 
 let Tea = BrewType(
     id: UUID(),
     name: "Tea",
-    aquifer: WaterSource(bufferGrams: 0.0, extractionBoosterGrams: 0.0, hardnessGrams: 0.0),
+    aquifer: WaterSource(bufferGrams: 0.0, extractionBoosterGrams: 0.0, hardnessGrams: 0.0), // TODO: Put actual calculations
     glacial: WaterSource(bufferGrams: 0.59, extractionBoosterGrams: 0.59, hardnessGrams: 50.0),
     spring: WaterSource(bufferGrams: 1.18, extractionBoosterGrams: 1.18, hardnessGrams: 100.0)
     // TODO: Add here for another water type
