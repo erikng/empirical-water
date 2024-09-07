@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     " " : {
       "localizations" : {
         "en" : {
@@ -95,6 +98,9 @@
         }
       }
     },
+    "Volumetric - Convert from grams (g) to millileters (mL)" : {
+
+    },
     "water" : {
       "localizations" : {
         "en" : {
@@ -115,7 +121,11 @@
         }
       }
     },
+    "zero TDS water" : {
+
+    },
     "Zero TDS Water" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

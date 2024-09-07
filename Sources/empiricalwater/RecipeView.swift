@@ -16,13 +16,10 @@ struct RecipeView: View {
     @AppStorage("useVolumetricMeasurementZeroTDSWater") var useVolumetricMeasurementZeroTDSWater: Bool = false
     @AppStorage("lastVersionLaunched") var lastVersionLaunched: String = "0.0"
     @State var options = [
-        Option(title: "Volumetric")
-    ]
-    @State var options2 = [
-        Option(title: "Volumetric Hardness"),
-        Option(title: "Volumetric Buffer"),
-        Option(title: "Volumetric Extraction Booster"),
-        Option(title: "Volumetric Zero TDS Water")
+        Option(title: "hardness"),
+        Option(title: "buffer"),
+        Option(title: "extraction booster"),
+        Option(title: "zero TDS water")
     ]
 
     var body: some View {
@@ -60,13 +57,18 @@ struct RecipeView: View {
                 
                 #if !SKIP
                 DisclosureGroup("Optional Features", isExpanded: $appState.isOptionsExpanded) {
-                    Group {
-                        OptionRow(value: $useVolumetricMeasurementHardness, option: options2[0])
-                        OptionRow(value: $useVolumetricMeasurementBuffer, option: options2[1])
-                        OptionRow(value: $useVolumetricMeasurementExtractionBooster, option: options2[2])
-                        OptionRow(value: $useVolumetricMeasurementZeroTDSWater, option: options2[3])
+                    VStack(spacing: 10) {
+                        Text("Volumetric - Convert from grams (g) to millileters (mL)")
+                            .font(.caption2)
+                            .foregroundColor(.secondary)
+                        OptionRow(value: $useVolumetricMeasurementHardness, option: options[0])
+                        OptionRow(value: $useVolumetricMeasurementBuffer, option: options[1])
+                        OptionRow(value: $useVolumetricMeasurementExtractionBooster, option: options[2])
+                        OptionRow(value: $useVolumetricMeasurementZeroTDSWater, option: options[3])
+                        
                     }
                     .foregroundColor(.primary)
+                    .listRowInsets(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 16))
                 }
                 .foregroundColor(.secondary)
                 .accentColor(appState.isOptionsExpanded ? .primary : .secondary)
@@ -108,7 +110,7 @@ struct RecipeView: View {
                 }
                 
                 HStack {
-                    Text("Zero TDS Water")
+                    Text("zero TDS water")
                         .font(.callout)
                     Spacer()
                     let zeroTDSWater = calculateZeroTDSWater()
