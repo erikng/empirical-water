@@ -32,6 +32,7 @@
       }
     },
     "%@ mL" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -60,6 +61,9 @@
           }
         }
       }
+    },
+    "Optional Features" : {
+
     },
     "Purchase these concentrates at " : {
       "localizations" : {

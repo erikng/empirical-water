@@ -5,11 +5,26 @@
 //  Created by Erik Gomez on 08/23/24.
 //
 
+import Foundation
 import SwiftUI
 
 struct RecipeView: View {
     @EnvironmentObject var appState: AppState
-    
+    @AppStorage("useVolumetricMeasurementHardness") var useVolumetricMeasurementHardness: Bool = false
+    @AppStorage("useVolumetricMeasurementBuffer") var useVolumetricMeasurementBuffer: Bool = false
+    @AppStorage("useVolumetricMeasurementExtractionBooster") var useVolumetricMeasurementExtractionBooster: Bool = false
+    @AppStorage("useVolumetricMeasurementZeroTDSWater") var useVolumetricMeasurementZeroTDSWater: Bool = false
+    @AppStorage("lastVersionLaunched") var lastVersionLaunched: String = "0.0"
+    @State var options = [
+        Option(title: "Volumetric")
+    ]
+    @State var options2 = [
+        Option(title: "Volumetric Hardness"),
+        Option(title: "Volumetric Buffer"),
+        Option(title: "Volumetric Extraction Booster"),
+        Option(title: "Volumetric Zero TDS Water")
+    ]
+
     var body: some View {
         List {
             Section {
@@ -42,8 +57,28 @@ struct RecipeView: View {
                     )
                     Text(String(Int(appState.unitVolume)))
                 }
+                
+                #if !SKIP
+                DisclosureGroup("Optional Features", isExpanded: $appState.isOptionsExpanded) {
+                    Group {
+                        OptionRow(value: $useVolumetricMeasurementHardness, option: options2[0])
+                        OptionRow(value: $useVolumetricMeasurementBuffer, option: options2[1])
+                        OptionRow(value: $useVolumetricMeasurementExtractionBooster, option: options2[2])
+                        OptionRow(value: $useVolumetricMeasurementZeroTDSWater, option: options2[3])
+                    }
+                    .foregroundColor(.primary)
+                }
+                .foregroundColor(.secondary)
+                .accentColor(appState.isOptionsExpanded ? .primary : .secondary)
+                .onAppear {
+                    if appVersion.compare(lastVersionLaunched, options: .numeric) == .orderedDescending {
+                        appState.isOptionsExpanded = true
+                        lastVersionLaunched = appVersion
+                    }
+                }
+                #endif
             }
-            
+
             Section {
                 if !appState.water.selectedWater.note.isEmpty {
                     Text(LocalizedStringKey(appState.water.selectedWater.note))
@@ -51,12 +86,20 @@ struct RecipeView: View {
                 }
                 
                 ForEach(["hardness", "buffer", "extraction booster"], id: \.self) { component in
-                    let value = calculateBrewTypeValues(for: component)
+                    let volumetricValue = {
+                        switch component {
+                            case "hardness": return useVolumetricMeasurementHardness
+                            case "buffer": return useVolumetricMeasurementBuffer
+                            case "extraction booster": return useVolumetricMeasurementExtractionBooster
+                            default: return false
+                        }
+                    }()
+                    let value = calculateBrewTypeValues(for: component, volumetric: volumetricValue)
                     HStack {
                         Text("\(mainAppState.water.selectedWater.name) \(component)")
                             .font(.callout)
                         Spacer()
-                        Text("\(value) \(component == "hardness" ? "mL" : "grams")")
+                        Text("\(value) \(volumetricValue ? "mL" : "grams")")
                             .font(.callout)
                             .bold()
                     }
@@ -69,7 +112,7 @@ struct RecipeView: View {
                         .font(.callout)
                     Spacer()
                     let zeroTDSWater = calculateZeroTDSWater()
-                    Text("\(zeroTDSWater) mL")
+                    Text("\(zeroTDSWater) \(useVolumetricMeasurementZeroTDSWater ? "mL" : "grams")")
                         .font(.callout)
                         .bold()
                 }
@@ -113,6 +156,18 @@ struct RecipeView: View {
                 .foregroundColor(.secondary)
                 .font(.caption)
             }
+        }
+    }
+}
+
+struct OptionRow: View {
+    // Accept a binding
+    @Binding var value: Bool
+    let option: Option
+
+    var body: some View {
+        Toggle(isOn: $value) {
+            Text(option.title)
         }
     }
 }

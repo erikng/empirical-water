@@ -12,6 +12,11 @@ import SwiftUI
 let logger: Logger = Logger(subsystem: "com.empiricalwater.app", category: "empiricalwater")
 /// The Android SDK number we are running against, or `nil` if not running on Android
 let androidSDK = ProcessInfo.processInfo.environment["android.os.Build.VERSION.SDK_INT"].flatMap({ Int($0) })
+#if SKIP
+    let appVersion = ProcessInfo.processInfo.environment["android.os.Build.VERSION.RELEASE"]
+#else
+    let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
+#endif
 
 #if !SKIP
 public protocol empiricalwaterApp : App {
@@ -27,10 +32,11 @@ public extension empiricalwaterApp {
 #endif
 
 class AppState: ObservableObject {
-    @Published var water: Waters = .glacial
     @Published var brewType: BrewTypes = .light_roast
+    @Published var isOptionsExpanded = false
     @Published var unit: Units = .liter
     @Published var unitVolume = 1.0
+    @Published var water: Waters = .glacial
 }
 var mainAppState = AppState()
 
