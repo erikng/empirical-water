@@ -36,6 +36,15 @@ extension Units {
         )
         }
     }
+
+    var unitColor: Color {
+        switch self {
+        case .liter:
+            return Color(red: 21.0 / 255.0, green: 67.0 / 255.0, blue: 109.0 / 255.0)
+        case .gallon:
+            return .secondary
+        }
+    }
 }
 
 struct Water: Codable, Hashable, Identifiable {
@@ -91,6 +100,21 @@ enum BrewTypes: String, CaseIterable, Identifiable {
         case .dark_roast: return darkRoast
         case .espresso: return Espresso
         case .tea: return Tea
+        }
+    }
+    
+    var brewColor: Color {
+        switch self {
+        case .light_roast:
+            return Color(red: 184.0 / 255.0, green: 115.0 / 255.0, blue: 51.0 / 255.0) // Copper
+        case .medium_roast:
+            return Color(red: 150.0 / 255.0, green: 75.0 / 255.0, blue: 0.0 / 255.0) // Brown
+        case .dark_roast:
+            return Color(red: 101.0 / 255.0, green: 67.0 / 255.0, blue: 33.0 / 255.0) // Dark Brown
+        case .espresso:
+            return Color(red: 0.0 / 255.0, green: 0.0 / 255.0, blue: 0.0 / 255.0) // Black
+        case .tea:
+            return Color(red: 85.0 / 255.0, green: 107.0 / 255.0, blue: 47.0 / 255.0) // Dark Olive Green
         }
     }
 }

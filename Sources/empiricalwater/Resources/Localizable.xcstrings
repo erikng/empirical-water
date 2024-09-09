@@ -24,6 +24,9 @@
         }
       }
     },
+    "%@" : {
+
+    },
     "%@ %@" : {
       "localizations" : {
         "en" : {
@@ -45,7 +48,14 @@
         }
       }
     },
+    "%@s" : {
+
+    },
+    "%lld" : {
+
+    },
     "Brew" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -64,6 +74,9 @@
           }
         }
       }
+    },
+    "Optional" : {
+
     },
     "Optional Features" : {
 
