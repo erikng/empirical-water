@@ -42,12 +42,16 @@ var mainAppState = AppState()
 
 public struct RootView : View {
     @StateObject private var appState: AppState = mainAppState
+    @AppStorage("forceDarkMode") var forceDarkMode: Bool = false
     
     public init() {
     }
     
     public var body: some View {
         RecipeView()
+        #if !SKIP
+            .preferredColorScheme(forceDarkMode ? .dark : .none)
+        #endif
             .environmentObject(appState)
             .task {
                 logger.log("Running on \(androidSDK != nil ? "Android" : "Darwin")!")

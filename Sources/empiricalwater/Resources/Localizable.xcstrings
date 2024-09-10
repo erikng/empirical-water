@@ -54,6 +54,9 @@
     "%lld" : {
 
     },
+    "Additional Features" : {
+
+    },
     "Brew" : {
       "extractionState" : "stale",
       "localizations" : {

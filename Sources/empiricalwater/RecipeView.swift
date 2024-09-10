@@ -10,6 +10,7 @@ import SwiftUI
 
 struct RecipeView: View {
     @EnvironmentObject var appState: AppState
+    @AppStorage("forceDarkMode") var forceDarkMode: Bool = false
     @AppStorage("useVolumetricMeasurementHardness") var useVolumetricMeasurementHardness: Bool = false
     @AppStorage("useVolumetricMeasurementBuffer") var useVolumetricMeasurementBuffer: Bool = false
     @AppStorage("useVolumetricMeasurementExtractionBooster") var useVolumetricMeasurementExtractionBooster: Bool = false
@@ -19,7 +20,8 @@ struct RecipeView: View {
         Option(title: "hardness"),
         Option(title: "buffer"),
         Option(title: "extraction booster"),
-        Option(title: "zero TDS water")
+        Option(title: "zero TDS water"),
+        Option(title: "Force Dark Mode")
     ]
     @State var isToggled: Bool = false
     @State private var isPresented: Bool = false
@@ -174,7 +176,10 @@ struct RecipeView: View {
                             OptionRow(value: $useVolumetricMeasurementBuffer, option: options[1])
                             OptionRow(value: $useVolumetricMeasurementExtractionBooster, option: options[2])
                             OptionRow(value: $useVolumetricMeasurementZeroTDSWater, option: options[3])
-                            
+                            Text("Additional Features")
+                                .font(.caption2)
+                                .foregroundColor(.secondary)
+                            OptionRow(value: $forceDarkMode, option: options[4])
                         }
                         .foregroundColor(.primary)
                     }
