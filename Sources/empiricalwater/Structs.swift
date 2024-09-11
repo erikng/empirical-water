@@ -19,13 +19,17 @@ struct UnitOfMeasurement: Codable, Hashable, Identifiable {
 }
 
 enum Units: String, CaseIterable, Identifiable {
-    case liter, gallon
+    case milliliter, liter, gallon
     var id: String { self.rawValue }
 }
 
 extension Units {
     var selectedUnit: UnitOfMeasurement {
         switch self {
+        case .milliliter: return UnitOfMeasurement(
+            id: UUID(),
+            name: "Millileter"
+        )
         case .liter: return UnitOfMeasurement(
             id: UUID(),
             name: "Liter"
@@ -39,6 +43,8 @@ extension Units {
 
     var unitColor: Color {
         switch self {
+        case .milliliter:
+            return Color(red: 21.0 / 255.0, green: 67.0 / 255.0, blue: 109.0 / 255.0)
         case .liter:
             return Color(red: 21.0 / 255.0, green: 67.0 / 255.0, blue: 109.0 / 255.0)
         case .gallon:
@@ -300,7 +306,7 @@ let Tea = BrewType(
 
 func calculateBrewTypeValues(for component: String, volumetric: Bool) -> String {
     var value: Double = 0.0
-    let volumeCalculation = mainAppState.unit == .liter ? mainAppState.unitVolume : mainAppState.unitVolume * 3.785
+    let volumeCalculation = mainAppState.unit == .milliliter ? mainAppState.unitVolume / 1000 : mainAppState.unit == .liter ? mainAppState.unitVolume : mainAppState.unitVolume * 3.785
     
     let waterSource = {
         switch mainAppState.water.selectedWater.name {
@@ -323,7 +329,7 @@ func calculateBrewTypeValues(for component: String, volumetric: Bool) -> String 
 }
 
 func calculateZeroTDSWater() -> String {
-    let volumeCalculation = mainAppState.unit == .liter ? mainAppState.unitVolume : mainAppState.unitVolume * 3.785
+    let volumeCalculation = mainAppState.unit == .milliliter ? mainAppState.unitVolume / 1000 : mainAppState.unit == .liter ? mainAppState.unitVolume : mainAppState.unitVolume * 3.785
     var value: Double = 0.0
     
     switch mainAppState.water {

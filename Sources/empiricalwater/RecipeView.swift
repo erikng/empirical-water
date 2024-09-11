@@ -44,11 +44,22 @@ struct RecipeView: View {
                                     }
                                 }
                             }, label: {
-                                Text("\(appState.water.selectedWater.name)")
-                                    .foregroundColor(.white)
-                                    .font(.title2)
-                                    .fontWeight(.bold)
-                                    .frame(width: 125, height: 125)
+                                VStack {
+                                    HStack(spacing: 5) {
+                                        Text("\(appState.water.selectedWater.name)")
+                                            .foregroundColor(.white)
+                                            .font(.title2)
+                                            .fontWeight(.bold)
+                                        Text("\(Image(systemName: "chevron.up.chevron.down"))")
+                                            .foregroundColor(.white)
+                                    }
+                                        .lineLimit(1)
+                                        .frame(width: 80)
+                                        #if !SKIP
+                                        .minimumScaleFactor(0.001)
+                                        #endif
+                                }
+                                .frame(width: 125, height: 125)
                                 #if !SKIP
                                     .contentShape(Circle())
                                 #endif
@@ -80,9 +91,13 @@ struct RecipeView: View {
                                     }
                                 }
                             }, label: {
-                                Text("\(appState.brewType.selectedBrewType.name)")
-                                    .frame(minWidth: 110) // Ensures the text is centered within the button
-                                    .padding()
+                                HStack(spacing: 5) {
+                                    Text("\(appState.brewType.selectedBrewType.name)")
+                                    Text("\(Image(systemName: "chevron.up.chevron.down"))")
+                                }
+                                .frame(width: 140) // Ensures the text is centered within the button
+                                .padding()
+  
                             })
                             .foregroundColor(.white)
                             .background(appState.brewType.brewColor)
@@ -96,7 +111,10 @@ struct RecipeView: View {
                                     }
                                 }
                             }, label: {
-                                Text("\(appState.unit.selectedUnit.name)")
+                                HStack(spacing: 5) {
+                                    Text("\(appState.unit.selectedUnit.name)")
+                                    Text("\(Image(systemName: "chevron.up.chevron.down"))")
+                                }
                                     .frame(minWidth: 110) // Ensures the text is centered within the button
                                     .padding()
                             })
@@ -110,8 +128,8 @@ struct RecipeView: View {
                                 .foregroundColor(.secondary)
                             Slider(
                                 value: $appState.unitVolume,
-                                in: appState.unit == .liter ? 0.0...20.0 : 0.0...5.0,
-                                step: 1.0
+                                in: appState.unit == .milliliter ? 0.0...1000.0 : appState.unit == .liter ? 0.0...20.0 : 0.0...5.0,
+                                step: appState.unit == .milliliter ? 5.0 : 1.0
                             )
                             .tint(Color(red: 21.0 / 255.0, green: 67.0 / 255.0, blue: 109.0 / 255.0))
                             Text(String(Int(appState.unitVolume)))
@@ -226,6 +244,13 @@ struct RecipeView: View {
             #if !SKIP
             .listSectionSpacing(12)
             #endif
+        }
+        .onChange(of: appState.unit) {
+            if appState.unit == .milliliter {
+                appState.unitVolume = 5.0
+            } else {
+                appState.unitVolume = 1.0
+            }
         }
     }
 }
