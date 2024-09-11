@@ -11,6 +11,7 @@ import SwiftUI
 struct RecipeView: View {
     @EnvironmentObject var appState: AppState
     @AppStorage("forceDarkMode") var forceDarkMode: Bool = false
+    @AppStorage("minimalButtons") var minimalButtons: Bool = false
     @AppStorage("useVolumetricMeasurementHardness") var useVolumetricMeasurementHardness: Bool = false
     @AppStorage("useVolumetricMeasurementBuffer") var useVolumetricMeasurementBuffer: Bool = false
     @AppStorage("useVolumetricMeasurementExtractionBooster") var useVolumetricMeasurementExtractionBooster: Bool = false
@@ -21,7 +22,8 @@ struct RecipeView: View {
         Option(title: "buffer"),
         Option(title: "extraction booster"),
         Option(title: "zero TDS water"),
-        Option(title: "Force Dark Mode")
+        Option(title: "Force Dark Mode"),
+        Option(title: "Minimal Buttons")
     ]
     @State var isToggled: Bool = false
     @State private var isPresented: Bool = false
@@ -50,8 +52,10 @@ struct RecipeView: View {
                                             .foregroundColor(.white)
                                             .font(.title2)
                                             .fontWeight(.bold)
-                                        Text("\(Image(systemName: "chevron.up.chevron.down"))")
-                                            .foregroundColor(.white)
+                                        if !minimalButtons {
+                                            Text("\(Image(systemName: "chevron.up.chevron.down"))")
+                                                .foregroundColor(.white)
+                                        }
                                     }
                                         .lineLimit(1)
                                         .frame(width: 80)
@@ -93,9 +97,11 @@ struct RecipeView: View {
                             }, label: {
                                 HStack(spacing: 5) {
                                     Text("\(appState.brewType.selectedBrewType.name)")
-                                    Text("\(Image(systemName: "chevron.up.chevron.down"))")
+                                    if !minimalButtons {
+                                        Text("\(Image(systemName: "chevron.up.chevron.down"))")
+                                    }
                                 }
-                                .frame(width: 140) // Ensures the text is centered within the button
+                                .frame(width: minimalButtons ? 110.0 : 140.0) // Ensures the text is centered within the button
                                 .padding()
   
                             })
@@ -113,7 +119,9 @@ struct RecipeView: View {
                             }, label: {
                                 HStack(spacing: 5) {
                                     Text("\(appState.unit.selectedUnit.name)")
-                                    Text("\(Image(systemName: "chevron.up.chevron.down"))")
+                                    if !minimalButtons {
+                                        Text("\(Image(systemName: "chevron.up.chevron.down"))")
+                                    }
                                 }
                                     .frame(minWidth: 110) // Ensures the text is centered within the button
                                     .padding()
@@ -195,6 +203,7 @@ struct RecipeView: View {
                                 .font(.caption2)
                                 .foregroundColor(.secondary)
                             OptionRow(value: $forceDarkMode, option: options[4])
+                            OptionRow(value: $minimalButtons, option: options[5])
                         }
                         .foregroundColor(.primary)
                     }
