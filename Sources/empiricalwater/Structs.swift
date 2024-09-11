@@ -28,7 +28,7 @@ extension Units {
         switch self {
         case .milliliter: return UnitOfMeasurement(
             id: UUID(),
-            name: "Millileter"
+            name: "Milliliter"
         )
         case .liter: return UnitOfMeasurement(
             id: UUID(),

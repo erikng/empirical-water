@@ -192,7 +192,7 @@ struct RecipeView: View {
                     #if !SKIP
                     DisclosureGroup("Optional Features", isExpanded: $appState.isOptionsExpanded) {
                         VStack(spacing: 10) {
-                            Text("Volumetric - Convert from grams (g) to millileters (mL)")
+                            Text("Volumetric - Convert from grams (g) to milliliters (mL)")
                                 .font(.caption2)
                                 .foregroundColor(.secondary)
                             OptionRow(value: $useVolumetricMeasurementHardness, option: options[0])
