@@ -132,15 +132,16 @@ struct RecipeView: View {
                         }
                         
                         HStack {
-                            Text("\(appState.unit.selectedUnit.name)s")
+                            Text(appState.unit == .milliliter ? "mL" : "\(appState.unit.selectedUnit.name)s")
                                 .foregroundColor(.secondary)
                             Slider(
                                 value: $appState.unitVolume,
-                                in: appState.unit == .milliliter ? 0.0...1000.0 : appState.unit == .liter ? 0.0...20.0 : 0.0...5.0,
-                                step: appState.unit == .milliliter ? 5.0 : 1.0
+                                in: appState.unit == .milliliter ? 100.0...1000.0 : appState.unit == .liter ? 1.0...10.0 : 0.0...10.0,
+                                step: appState.unit == .milliliter ? 5.0 : appState.unit == .liter ? 0.25 : 1.0
                             )
                             .tint(Color(red: 21.0 / 255.0, green: 67.0 / 255.0, blue: 109.0 / 255.0))
-                            Text(String(Int(appState.unitVolume)))
+                            Text(appState.unit == .liter ? String(format: "%.2f", appState.unitVolume) : String(Int(appState.unitVolume)))
+                                .frame(minWidth: 35)
                         }
                     }
                     .frame(maxWidth: .infinity)
@@ -256,7 +257,7 @@ struct RecipeView: View {
         }
         .onChange(of: appState.unit) {
             if appState.unit == .milliliter {
-                appState.unitVolume = 5.0
+                appState.unitVolume = 100.0
             } else {
                 appState.unitVolume = 1.0
             }
