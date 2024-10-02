@@ -12,6 +12,7 @@ struct RecipeView: View {
     @EnvironmentObject var appState: AppState
     @AppStorage("forceDarkMode") var forceDarkMode: Bool = false
     @AppStorage("minimalButtons") var minimalButtons: Bool = false
+    @AppStorage("showExtractionBooster") var showExtractionBooster: Bool = false
     @AppStorage("useVolumetricMeasurementHardness") var useVolumetricMeasurementHardness: Bool = false
     @AppStorage("useVolumetricMeasurementBuffer") var useVolumetricMeasurementBuffer: Bool = false
     @AppStorage("useVolumetricMeasurementExtractionBooster") var useVolumetricMeasurementExtractionBooster: Bool = false
@@ -23,7 +24,8 @@ struct RecipeView: View {
         Option(title: "extraction booster"),
         Option(title: "zero TDS water"),
         Option(title: "Force Dark Mode"),
-        Option(title: "Minimal Buttons")
+        Option(title: "Minimal Buttons"),
+        Option(title: "Show extraction booster")
     ]
     @State var isToggled: Bool = false
     @State private var isPresented: Bool = false
@@ -162,18 +164,22 @@ struct RecipeView: View {
                                 }
                             }()
                             let value = calculateBrewTypeValues(for: component, volumetric: volumetricValue)
-                            HStack {
-                                if component == "extraction booster" {
-                                    SuperscriptText(regularText: "\(component)", superscriptText: "Optional", font: Font.callout)
-                                } else {
-                                    Text("\(component)")
+                            if component == "extraction booster" && !showExtractionBooster {
+                                EmptyView()
+                            } else {
+                                HStack {
+                                    if component == "extraction booster" {
+                                        SuperscriptText(regularText: "\(component)", superscriptText: "Optional", font: Font.callout)
+                                    } else {
+                                        Text("\(component)")
+                                    }
+                                    Spacer()
+                                    Text("\(value) \(volumetricValue ? "mL" : "grams")")
+                                        .bold()
                                 }
-                                Spacer()
-                                Text("\(value) \(volumetricValue ? "mL" : "grams")")
-                                    .bold()
+                                .font(.callout)
+                                .foregroundColor(.white)
                             }
-                            .font(.callout)
-                            .foregroundColor(.white)
                         }
                     }
                     .listRowBackground(Color(red: 21.0 / 255.0, green: 67.0 / 255.0, blue: 109.0 / 255.0))
@@ -205,6 +211,7 @@ struct RecipeView: View {
                                 .foregroundColor(.secondary)
                             OptionRow(value: $forceDarkMode, option: options[4])
                             OptionRow(value: $minimalButtons, option: options[5])
+                            OptionRow(value: $showExtractionBooster, option: options[6])
                         }
                         .foregroundColor(.primary)
                     }
