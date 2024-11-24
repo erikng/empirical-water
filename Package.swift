@@ -14,7 +14,7 @@ let package = Package(
         .library(name: "empiricalwaterApp", type: .dynamic, targets: ["empiricalwater"]),
     ],
     dependencies: [
-        .package(url: "https://source.skip.tools/skip.git", from: "1.0.8"),
+        .package(url: "https://source.skip.tools/skip.git", from: "1.0.9"),
         .package(url: "https://source.skip.tools/skip-ui.git", from: "1.0.0")
     ],
     targets: [

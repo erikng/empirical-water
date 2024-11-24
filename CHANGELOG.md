@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.9] - 2024-11-23
+### Changes
+- Recipes have been updated to match website changes
+  - spring light/medium/dark roast
+  - glacial light roast
+- "snowmelt" added but currently non functional
+- Built on Xcode 16.1
+
 ## [1.0.8] - 2024-10-02
 ### Changes
 - Extraction Booster is now off by default
