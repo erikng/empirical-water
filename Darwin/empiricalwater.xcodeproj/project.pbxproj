@@ -19,7 +19,6 @@
 		E20000000000000000000008 /* empiricalwaterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10000000000000000000008 /* empiricalwaterApp.swift */; };
 /* End PBXBuildFile section */
 
-
 /* Begin PBXFileReference section */
 		4900101C2BACEA710000DE33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		496BDBEB2B89A47800C09264 /* empiricalwater.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = empiricalwater.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +48,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		493609562A6B7EAE00C401E2 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				E10000000000000000000001 /* AppState.swift */,
+				E10000000000000000000002 /* RecipeCalculator.swift */,
+				E10000000000000000000003 /* RecipeResultsSection.swift */,
+				E10000000000000000000004 /* RecipeView.swift */,
+				E10000000000000000000005 /* Recipes.swift */,
+				E10000000000000000000006 /* SettingsView.swift */,
+				E10000000000000000000007 /* Units.swift */,
+				E10000000000000000000008 /* empiricalwaterApp.swift */,
+			);
+			name = Sources;
+			path = ../Sources/empiricalwater;
+			sourceTree = "<group>";
+		};
 		496BDBEC2B89A47800C09264 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -77,22 +92,6 @@
 				4900101C2BACEA710000DE33 /* Info.plist */,
 			);
 			name = App;
-			sourceTree = "<group>";
-		};
-		493609562A6B7EAE00C401E2 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				E10000000000000000000001 /* AppState.swift */,
-				E10000000000000000000002 /* RecipeCalculator.swift */,
-				E10000000000000000000003 /* RecipeResultsSection.swift */,
-				E10000000000000000000004 /* RecipeView.swift */,
-				E10000000000000000000005 /* Recipes.swift */,
-				E10000000000000000000006 /* SettingsView.swift */,
-				E10000000000000000000007 /* Units.swift */,
-				E10000000000000000000008 /* empiricalwaterApp.swift */,
-			);
-			name = Sources;
-			path = ../Sources/empiricalwater;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,7 +154,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-
 /* Begin PBXSourcesBuildPhase section */
 		499CD43A2AC5B799001AE8D8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -178,14 +176,30 @@
 		499CD4422AC5B799001AE8D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = U7DN82F4L9;
 				ENABLE_PREVIEWS = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "empirical water";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				MARKETING_VERSION = 1.0.10;
+				PRODUCT_BUNDLE_IDENTIFIER = com.empiricalwater.alt.app;
 			};
 			name = Debug;
 		};
 		499CD4432AC5B799001AE8D8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = U7DN82F4L9;
 				ENABLE_PREVIEWS = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "empirical water";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				MARKETING_VERSION = 1.0.10;
+				PRODUCT_BUNDLE_IDENTIFIER = com.empiricalwater.alt.app;
 			};
 			name = Release;
 		};
@@ -308,7 +322,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
 	};
 	rootObject = 49F90C202A52156200F06D93 /* Project object */;
 }
