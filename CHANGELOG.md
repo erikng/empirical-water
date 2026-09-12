@@ -5,6 +5,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Custom recipes with independent hardness and buffer concentrates, optional booster,
+  live dilution/mineral results, and batch-volume scaling.
+- Local recipe saving, multiline notes, editing, cancellation, confirmed deletion,
+  and default selection, following the current Blossom Rain editor.
+- Custom-recipe verification across all concentrate pairs and measurement settings.
+
 ### Changes
 - Native SwiftUI builds for iPhone, iPad, and Mac, with no third-party app dependencies.
 - Removed Android and transpiler build infrastructure.

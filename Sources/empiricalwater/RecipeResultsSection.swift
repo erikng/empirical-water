@@ -2,6 +2,7 @@ import SwiftUI
 
 struct RecipeResultsSection: View {
     @Environment(AppState.self) private var appState
+    @Environment(RecipeLibrary.self) private var library
     @AppStorage("showExtractionBooster") private var showExtractionBooster = false
     @AppStorage("useVolumetricMeasurementHardness") private var volumetricHardness = false
     @AppStorage("useVolumetricMeasurementBuffer") private var volumetricBuffer = false
@@ -11,7 +12,7 @@ struct RecipeResultsSection: View {
     var body: some View {
         @Bindable var appState = appState
 
-        if showExtractionBooster {
+        if library.isPreset && showExtractionBooster {
             Section {
                 LabeledContent("Booster per Liter") {
                     Text("\(appState.boosterPerLiter, format: .number.precision(.fractionLength(1))) mL")
@@ -29,20 +30,16 @@ struct RecipeResultsSection: View {
             }
         }
 
-        if let result = RecipeCalculator.calculate(
-            water: appState.water, brew: appState.brewType,
-            volume: appState.unitVolume, unit: appState.unit,
-            boosterPerLiter: showExtractionBooster ? appState.boosterPerLiter : 0
-        ) {
+        if let result = result {
             Section {
                 amountRow(.hardness, result: result, volumetric: volumetricHardness)
                 amountRow(.buffer, result: result, volumetric: volumetricBuffer)
-                if showExtractionBooster {
+                if !library.isPreset || showExtractionBooster {
                     amountRow(.booster, result: result, volumetric: volumetricBooster)
                 }
                 amountRow(.zeroWater, result: result, volumetric: volumetricWater)
             } header: {
-                Text(showExtractionBooster && appState.boosterPerLiter > 0 ? "Adjusted Brew Water Recipe" : "Brew Water Recipe")
+                Text(library.isPreset && showExtractionBooster && appState.boosterPerLiter > 0 ? "Adjusted Brew Water Recipe" : "Brew Water Recipe")
             } footer: {
                 Text("Add the concentrates, then add the zero TDS water shown to reach the selected final volume. Amounts are rounded only for display.")
             }
@@ -54,10 +51,23 @@ struct RecipeResultsSection: View {
             }
         } else {
             Section {
-                Text("Choose a supported recipe and a valid volume to calculate your brew water.")
+                Text(library.isPreset
+                     ? "Choose a supported recipe and a valid volume to calculate your brew water."
+                     : "Correct the custom concentrate amounts to calculate your brew water.")
                     .foregroundStyle(.secondary)
             }
         }
+    }
+
+    private var result: RecipeAmounts? {
+        if library.isPreset {
+            return RecipeCalculator.calculate(water: appState.water, brew: appState.brewType,
+                volume: appState.unitVolume, unit: appState.unit,
+                boosterPerLiter: showExtractionBooster ? appState.boosterPerLiter : 0)
+        }
+        guard let recipe = library.currentRecipe else { return nil }
+        // A saved custom booster is part of the recipe, regardless of preset settings.
+        return RecipeCalculator.calculate(custom: recipe, volume: appState.unitVolume, unit: appState.unit)
     }
 
     private func amountRow(_ ingredient: Ingredient, result: RecipeAmounts, volumetric: Bool) -> some View {
@@ -67,7 +77,13 @@ struct RecipeResultsSection: View {
                 .monospacedDigit()
                 .textSelection(.enabled)
         } label: {
-            Text(ingredient.name)
+            if let recipe = library.currentRecipe, ingredient == .hardness {
+                Text("\(recipe.hardnessWater.name) Hardness")
+            } else if let recipe = library.currentRecipe, ingredient == .buffer {
+                Text("\(recipe.bufferWater.name) Buffer")
+            } else {
+                Text(ingredient.name)
+            }
         }
         .accessibilityElement(children: .combine)
         .accessibilityIdentifier("amount-\(ingredient.rawValue)")

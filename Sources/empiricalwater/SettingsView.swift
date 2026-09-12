@@ -14,6 +14,7 @@ struct SettingsView: View {
 
 /// Existing preference keys are kept so upgrades retain measurement choices.
 struct SettingsControls: View {
+    @Environment(RecipeStore.self) private var store
     @AppStorage("forceDarkMode") private var forceDarkMode = false
     @AppStorage("minimalButtons") private var minimalButtons = false
     @AppStorage("showExtractionBooster") private var showExtractionBooster = false
@@ -23,6 +24,19 @@ struct SettingsControls: View {
     @AppStorage("useVolumetricMeasurementZeroTDSWater") private var volumetricWater = false
 
     var body: some View {
+        Section {
+            Picker("Default Recipe", selection: Binding(
+                get: { store.defaultID }, set: { store.setDefault($0) }
+            )) {
+                RecipePickerOptions(includeCustomEditor: false)
+            }
+            .accessibilityIdentifier("defaultRecipePicker")
+        } header: {
+            Text("Recipes")
+        } footer: {
+            Text("Used when the app opens a new brewing window. Saved recipes are stored on this device.")
+        }
+
         Section {
             Toggle("Hardness in mL", isOn: $volumetricHardness)
             Toggle("Buffer in mL", isOn: $volumetricBuffer)
@@ -37,7 +51,7 @@ struct SettingsControls: View {
         Section("Appearance and Options") {
             Toggle("Force Dark Mode", isOn: $forceDarkMode)
             Toggle("Compact Header", isOn: $minimalButtons)
-            Toggle("Show Extraction Booster", isOn: $showExtractionBooster)
+            Toggle("Adjust Booster in Published Recipes", isOn: $showExtractionBooster)
                 .accessibilityIdentifier("showExtractionBooster")
         }
     }

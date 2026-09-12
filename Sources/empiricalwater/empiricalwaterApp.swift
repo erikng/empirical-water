@@ -3,9 +3,12 @@ import SwiftUI
 @main
 @MainActor
 struct EmpiricalWaterApp: App {
+    @State private var recipeStore = RecipeStore()
+
     var body: some Scene {
         WindowGroup("empirical water") {
-            RootView()
+            RootView(store: recipeStore)
+                .environment(recipeStore)
                 #if os(macOS)
                 .frame(minWidth: 420, minHeight: 560)
                 #endif
@@ -18,7 +21,8 @@ struct EmpiricalWaterApp: App {
         #if os(macOS)
         Settings {
             SettingsView()
-                .frame(width: 460, height: 430)
+                .environment(recipeStore)
+                .frame(width: 460, height: 560)
         }
         #endif
     }
@@ -26,11 +30,17 @@ struct EmpiricalWaterApp: App {
 
 struct RootView: View {
     @State private var appState = AppState()
+    @State private var library: RecipeLibrary
     @AppStorage("forceDarkMode") private var forceDarkMode = false
+
+    init(store: RecipeStore) {
+        _library = State(initialValue: RecipeLibrary(store: store))
+    }
 
     var body: some View {
         RecipeView()
             .environment(appState)
+            .environment(library)
             .preferredColorScheme(forceDarkMode ? .dark : nil)
     }
 }

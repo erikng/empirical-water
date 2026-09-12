@@ -17,6 +17,9 @@
 		E20000000000000000000006 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10000000000000000000006 /* SettingsView.swift */; };
 		E20000000000000000000007 /* Units.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10000000000000000000007 /* Units.swift */; };
 		E20000000000000000000008 /* empiricalwaterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10000000000000000000008 /* empiricalwaterApp.swift */; };
+		E20000000000000000000009 /* CustomRecipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10000000000000000000009 /* CustomRecipes.swift */; };
+		E2000000000000000000000A /* RecipeLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1000000000000000000000A /* RecipeLibrary.swift */; };
+		E2000000000000000000000B /* CustomRecipeEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1000000000000000000000B /* CustomRecipeEditor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +38,9 @@
 		E10000000000000000000006 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E10000000000000000000007 /* Units.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Units.swift; sourceTree = "<group>"; };
 		E10000000000000000000008 /* empiricalwaterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = empiricalwaterApp.swift; sourceTree = "<group>"; };
+		E10000000000000000000009 /* CustomRecipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRecipes.swift; sourceTree = "<group>"; };
+		E1000000000000000000000A /* RecipeLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeLibrary.swift; sourceTree = "<group>"; };
+		E1000000000000000000000B /* CustomRecipeEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRecipeEditor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +65,9 @@
 				E10000000000000000000006 /* SettingsView.swift */,
 				E10000000000000000000007 /* Units.swift */,
 				E10000000000000000000008 /* empiricalwaterApp.swift */,
+				E10000000000000000000009 /* CustomRecipes.swift */,
+				E1000000000000000000000A /* RecipeLibrary.swift */,
+				E1000000000000000000000B /* CustomRecipeEditor.swift */,
 			);
 			name = Sources;
 			path = ../Sources/empiricalwater;
@@ -167,6 +176,9 @@
 				E20000000000000000000006 /* SettingsView.swift in Sources */,
 				E20000000000000000000007 /* Units.swift in Sources */,
 				E20000000000000000000008 /* empiricalwaterApp.swift in Sources */,
+				E20000000000000000000009 /* CustomRecipes.swift in Sources */,
+				E2000000000000000000000A /* RecipeLibrary.swift in Sources */,
+				E2000000000000000000000B /* CustomRecipeEditor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

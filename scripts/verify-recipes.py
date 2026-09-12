@@ -28,7 +28,20 @@ subprocess.run([
     "xcrun", "swiftc", "-swift-version", "6", "-warnings-as-errors",
     "-target", f"{platform.machine()}-apple-macos14.0",
     *[str(SOURCE / file) for file in
-      ("Recipes.swift", "Units.swift", "RecipeCalculator.swift", "AppState.swift")],
+      ("Recipes.swift", "Units.swift", "RecipeCalculator.swift", "AppState.swift", "CustomRecipes.swift")],
     str(ROOT / "Tests/RecipeCalculationChecks.swift"), "-o", str(WORK / "checks"),
 ], cwd=ROOT, check=True)
 subprocess.run([str(WORK / "checks"), str(WORK / "expected.json")], cwd=ROOT, check=True)
+
+with (WORK / "custom-expected.json").open("w") as output:
+    subprocess.run(["node", str(ROOT / "Tests/empirical-custom-reference.cjs")],
+                   cwd=ROOT, stdout=output, check=True)
+
+subprocess.run([
+    "xcrun", "swiftc", "-swift-version", "6", "-warnings-as-errors",
+    "-target", f"{platform.machine()}-apple-macos14.0",
+    *[str(SOURCE / file) for file in
+      ("Recipes.swift", "Units.swift", "RecipeCalculator.swift", "CustomRecipes.swift", "RecipeLibrary.swift")],
+    str(ROOT / "Tests/CustomRecipeChecks.swift"), "-o", str(WORK / "custom-checks"),
+], cwd=ROOT, check=True)
+subprocess.run([str(WORK / "custom-checks"), str(WORK / "custom-expected.json")], cwd=ROOT, check=True)

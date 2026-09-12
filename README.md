@@ -14,10 +14,9 @@ Open `Darwin/empiricalwater.xcodeproj` in Xcode 16 or later (Swift 6), select
 Use Xcode 26 or later for the 26 SDKs. Physical-device and distribution builds
 require your Apple signing credentials.
 
-The app target compiles `Sources/empiricalwater/` directly. Identity, version,
-deployment targets, and signing settings live in `Darwin/empiricalwater.xcconfig`.
-The bundle identifier and effective version remain `com.empiricalwater.app` and
-`1.0.9` (build 1); increment the version/build before submitting a release.
+The app target compiles `Sources/empiricalwater/` directly. Base identity, version,
+deployment, and signing settings live in `Darwin/empiricalwater.xcconfig`.
+Target-specific overrides in the Xcode project take precedence over that file.
 The Mac app uses native SwiftUI/AppKit, with resizable independent recipe
 windows and Settings available from the toolbar or Command-comma.
 
@@ -48,6 +47,8 @@ xcodebuild -project Darwin/empiricalwater.xcodeproj -scheme empiricalwater \
 These commands build unsigned local artifacts. Mac sandboxing and hardened
 runtime are configured for signed builds. The optional Fastlane setup in
 `Darwin/fastlane/` handles iOS distribution.
+Run builds sequentially, adding `-jobs 2` to limit compiler concurrency. A generic
+iOS destination compiles for both iPhone and iPad without launching a simulator.
 
 ## Current recipes
 
@@ -76,6 +77,40 @@ is labeled an adjusted recipe and reduces dilution water accordingly. The app
 also shows the calculator's predicted GH, KH, and TDS. Existing measurement,
 dark-mode, and compact-header preferences keep their stored keys.
 
+## Custom recipes
+
+Choose **Custom Recipe** in the **Recipe** picker. Select hardness and buffer
+concentrates independently from Glacial, Spring, and Aviary, then adjust hardness,
+buffer, and extraction booster using sliders or decimal input. The starting
+mixture uses the website's custom defaults: 50 mL Glacial hardness and no buffer
+or booster per liter.
+
+Inputs are **mL of concentrate per liter of finished water**. The existing
+**Brew Volume** controls scale the recipe for milliliters, liters, or US gallons.
+Concentrates must total no more than 1,000 mL/L; zero TDS water fills the remainder.
+The ingredient amounts and predicted GH, KH, and TDS update while editing.
+Output respects each ingredient's grams/mL preference and the selected buffer's
+density. A custom recipe's booster is always included and shown, independently
+of the optional booster control for published presets.
+
+Enter a name and optional multiline description below the results, then choose
+**Save Recipe**. Saved recipes appear in the picker. Use **Recipe Actions** in
+the toolbar to edit or delete one; deletion asks for confirmation. Save/Cancel
+stay at the bottom even when input is invalid. Cancel restores the previous
+recipe without changing saved data, and edits preserve recipe identity.
+
+This follows the current Blossom Rain editor, including its actual-value slider
+snapping, decimal input, single keyboard **Done** button, multiline notes that
+do not submit the form, and Return/Escape actions. Typed precision survives
+saving and reopening a recipe. Notes display as plain text.
+
+**Default Recipe** in settings chooses Published Recipes or a saved recipe for
+new brewing windows and app launches. Recipes persist locally in the
+`customRecipes.v1` user-defaults entry; there is no network sync. Windows share
+the saved library while keeping their own selections, volume, and unsaved drafts.
+Deleting a custom default restores Published Recipes. Duplicate names and invalid
+doses cannot overwrite recipes; unreadable saved data is reported and preserved.
+
 ## Source provenance and verification
 
 `Reference/EmpiricalWater/recipes.json` saves the extracted constants, source
@@ -97,7 +132,11 @@ JavaScript independently and compare 12,288 cases: every preset, three volume
 units, four booster doses, and all 16 combinations of per-ingredient measurement
 preferences. Additional checks cover literal regression examples, final-volume
 conservation, unsupported recipes, invalid/overflowing inputs, and independent
-window state.
+window state. Another 5,184 comparisons exercise the saved calculator's Custom
+branch with all nine hardness/buffer concentrate pairs, decimal doses, booster,
+zero-mineral recipes, all units, and all measurement combinations. Feature checks
+cover save/reload, defaults, edit/cancel, multiline notes, deletion, duplicate names,
+independent windows, corrupt data, locale input, slider snapping, and typed precision.
 
 For future refreshes, download the guide and locate the script containing
 `PROFILES`, `BOOSTER`, and `render()`. Compare its constants and arithmetic with
