@@ -8,6 +8,5 @@ DerivedData/
 .swiftpm/configuration/registries.json
 .swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
 .netrc
-.gradle
-Android/app/skye-design-key.jks
-Android/app/keystore.properties
+__pycache__/
+*.pyc

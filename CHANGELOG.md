@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+### Changes
+- Native SwiftUI builds for iPhone, iPad, and Mac, with no third-party app dependencies.
+- Removed Android and transpiler build infrastructure.
+- Swift 6 and window-local Observation state; existing preferences are retained.
+- Refreshed all 12 published Water Calculator presets on September 12, 2026,
+  including Glacial Acidity++, Spring Espresso, and Aviary Filter.
+- Corrected concentrate densities, US gallon conversion, and final-volume dilution.
+- Optional extraction booster starts at zero and is labeled as a recipe adjustment.
+- Removed the unimplemented Aquifer and Snowmelt placeholder selections.
+- Native Mac settings, adaptive controls, and mineral profile readouts.
+- iOS 17 and macOS 14 minimums remain supported.
+
 ## [1.0.9] - 2024-11-23
 ### Changes
 - Recipes have been updated to match website changes

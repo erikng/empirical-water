@@ -1,0 +1,112 @@
+{
+  "sourceURL": "https://empiricalwater.com/pages/user-guide",
+  "retrievedOn": "2026-09-12",
+  "sourceSHA256": "1e575c79a44bdb980bc62f2895d119f794558c1e791f1f9221e22b7dd7630606",
+  "calculatorSHA256": "4a9a977b17c57951703453d799efadc5b7b4bf79b521e5ae0cde7cee374041f7",
+  "sourceBasis": "Current Water Calculator; excludes the deprecated instructions lower on the page.",
+  "profiles": [
+    {
+      "key": "glacial",
+      "name": "Glacial",
+      "ghPerMl": 0.6923999999999999,
+      "khPerMl": 0.3152,
+      "bufferKhPerMl": 27.234,
+      "bufferDensity": 1.022,
+      "hardnessTdsPerMl": 0.9391200000000001,
+      "bufferTdsPerMl": 41.365369,
+      "roasts": [
+        {
+          "label": "Acidity++",
+          "hardnessPerLiter": 50,
+          "bufferPerLiter": 0
+        },
+        {
+          "label": "Light",
+          "hardnessPerLiter": 50,
+          "bufferPerLiter": 0.3
+        },
+        {
+          "label": "Medium",
+          "hardnessPerLiter": 50,
+          "bufferPerLiter": 1
+        },
+        {
+          "label": "Dark",
+          "hardnessPerLiter": 50,
+          "bufferPerLiter": 1.5
+        },
+        {
+          "label": "Espresso",
+          "hardnessPerLiter": 50,
+          "bufferPerLiter": 1.5
+        },
+        {
+          "label": "Tea",
+          "hardnessPerLiter": 50,
+          "bufferPerLiter": 0.5
+        }
+      ]
+    },
+    {
+      "key": "spring",
+      "name": "Spring",
+      "ghPerMl": 0.6520999999999999,
+      "khPerMl": 0.2254,
+      "bufferKhPerMl": 41.5525,
+      "bufferDensity": 1.032,
+      "hardnessTdsPerMl": 0.85911,
+      "bufferTdsPerMl": 59.962447999999995,
+      "roasts": [
+        {
+          "label": "Light",
+          "hardnessPerLiter": 100,
+          "bufferPerLiter": 0
+        },
+        {
+          "label": "Medium",
+          "hardnessPerLiter": 100,
+          "bufferPerLiter": 1
+        },
+        {
+          "label": "Dark",
+          "hardnessPerLiter": 100,
+          "bufferPerLiter": 1.5
+        },
+        {
+          "label": "Espresso",
+          "hardnessPerLiter": 50,
+          "bufferPerLiter": 2
+        },
+        {
+          "label": "Tea",
+          "hardnessPerLiter": 100,
+          "bufferPerLiter": 1
+        }
+      ]
+    },
+    {
+      "key": "aviary",
+      "name": "Aviary",
+      "ghPerMl": 2.92,
+      "khPerMl": 0,
+      "bufferKhPerMl": 54,
+      "bufferDensity": 1.049,
+      "hardnessTdsPerMl": 3.412,
+      "bufferTdsPerMl": 90.727,
+      "roasts": [
+        {
+          "label": "Filter",
+          "hardnessPerLiter": 20,
+          "bufferPerLiter": 0.5
+        }
+      ]
+    }
+  ],
+  "booster": {
+    "ghPerMl": 10.58264,
+    "khPerMl": 0,
+    "tdsPerMl": 11.364589,
+    "density": 1.024
+  },
+  "gallonToML": 3785.41
+}

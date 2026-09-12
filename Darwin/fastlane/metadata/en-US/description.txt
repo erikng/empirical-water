@@ -1,1 +1,1 @@
-A great new app built with Skip!
+Calculate empirical water concentrate recipes for coffee and tea. Choose Glacial, Spring, or Aviary, select a brew style and batch volume, and measure ingredients in grams or milliliters. View hardness, alkalinity, and total dissolved solids, with an optional extraction booster adjustment.
